@@ -21,9 +21,8 @@ export default function Home() {
 
   const closeModal = () => {
     setTimeout(() => {
-
+      setAnimateModal(false)
     }, 1000)
-    setAnimateModal(false)
     setTimeout(() => {
       setShowModal(false);
       setEnableShowModalButton(true)
