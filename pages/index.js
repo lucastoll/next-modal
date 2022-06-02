@@ -7,14 +7,17 @@ import Modal from '../src/components/Modal/index'
 
 export default function Home() {
   const [showModal, setShowModal] = React.useState(false);
-  const [animateModal, setAnimateModal] = React.useState(false);
+  const [animateModal, setAnimateModal] = React.useState(true);
   const [enableShowModalButton, setEnableShowModalButton] = React.useState(true);
+
+
+  
 
 
   const openModal = () => {
     setEnableShowModalButton(false);
     setTimeout(() => {
-      setAnimateModal(true)
+      setAnimateModal(true);
       setShowModal(true);
     }, 100)
   }
@@ -22,11 +25,13 @@ export default function Home() {
   const closeModal = () => {
     setTimeout(() => {
       setAnimateModal(false)
-    }, 1000)
+    }, 500)
     setTimeout(() => {
       setShowModal(false);
       setEnableShowModalButton(true)
-    }, 2000)
+    }, 1500)
+
+    
   }
 
   return (
