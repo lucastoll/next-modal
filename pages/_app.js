@@ -1,9 +1,14 @@
-import '../src/styles/globals.css'
+import { GlobalStyle } from '../src/styles/GlobalStyled'
 
-/* Possivelmente aqui entra global styles e contexts */
+/* Aqui entra global styles e contexts */
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  )
 }
 
 export default MyApp

@@ -1,20 +1,21 @@
-.container {
-  padding: 0 2rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+import styled from 'styled-components'
 
-.main {
-  padding: 4rem 0;
+export const Container = styled.div`
+  padding: 3rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+`
+export const Wrapper = styled.div`
+  padding: 0 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
+  
 .footer {
   display: flex;
   flex: 1;
@@ -111,26 +112,11 @@
   margin-left: 0.5rem;
 }
 
-
-.ReactModal__Overlay {
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: all 500ms ease-in-out;
-}
-
-.ReactModal__Overlay--after-open {
-  opacity: 1;
-  transform: translateX(0px);
-}
-
-.ReactModal__Overlay--before-close {
-  opacity: 0 !important;
-  transform: translateX(-100px) !important;
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
   }
 }
+
+`
