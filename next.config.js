@@ -8,4 +8,7 @@ module.exports = {
     // Enables the styled-components SWC transform
     styledComponents: true
   },
+  images:  {
+    deviceSizes: [320, 640, 768, 1024, 1600, 1920, 2560]
+  }
 }, nextConfig

@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  border-top: 2px solid #c4c4c4;
   justify-content: center;
   align-items: center;
 }
@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: 4rem;
+  font-size: clamp(36px, 5vw, 72px);
 }
 
 .title,
@@ -74,7 +74,8 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1200px;
+  align-self: center;
 }
 
 .card {
@@ -83,10 +84,11 @@ export const Wrapper = styled.div`
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 1px solid #c4c4c4;
+  height: 160px;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  width: 300px;
 }
 
 .card:hover,
