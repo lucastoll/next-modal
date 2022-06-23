@@ -8,8 +8,7 @@ import Link from "next/link";
 export default function Home() {
   const [showModal, setShowModal] = React.useState(false);
   const [animateModal, setAnimateModal] = React.useState(true);
-  const [enableShowModalButton, setEnableShowModalButton] =
-    React.useState(true);
+  const [enableShowModalButton, setEnableShowModalButton] = React.useState(true);
 
   const openModal = () => {
     setEnableShowModalButton(false);
@@ -64,6 +63,11 @@ export default function Home() {
           <Link href="/api">
             <div className="card">
               <h2>Go to my api response</h2>
+            </div>
+          </Link>
+          <Link href="/fetch">
+            <div className="card">
+              <h2>Go to page fetch api</h2>
             </div>
           </Link>
         </div>
