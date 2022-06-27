@@ -4,7 +4,7 @@ import Footer from "../src/components/Footer";
 import Head from 'next/head';
 import Link from 'next/link';
 
-export default function page404() {
+export default function Page404() {
   return (
     <Wrapper>
         <Head>
@@ -12,7 +12,7 @@ export default function page404() {
       </Head>
       <Container>
         <h1 className="title">
-          Welcome to <a href="#">page 404</a>, you're in the wrong place
+          Welcome to <a href="#">page 404</a>, you`&apos;`re in the wrong place
         </h1>
         <div className="grid">
           <Link href="/">
