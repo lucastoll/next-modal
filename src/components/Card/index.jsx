@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import styled from "styled-components"
 import Image from 'next/dist/client/image'
+import { StatContainer, StatWrapper, TypeContainer, TypeWrapper, Wrapper } from './styles'
 
 const arrayTypes = [
   {name: "normal", color: "#AAAA99"},
@@ -23,89 +23,6 @@ const arrayTypes = [
   {name: "fairy", color: "#EE99EE"}
 ]
 
-const Wrapper = styled.div`
-border: 6px solid #fdd600;
-display: flex;
-padding: 10px 10px;
-height: 570px;
-flex-direction: column;
-width: fit-content;
-align-items: center;
-justify-content: center;
-gap: 10px;
-background: linear-gradient(120deg, ${props => props.gradientColor1} 0%, ${props => props.gradientColor2} 100%);
-
-h2{
-  font-size: ${props => props.text.length >= 10 ? "20px" : "32px"};
-  margin: 0;
-  color: black;
-  text-transform: uppercase;
-}
-
-.ImageWrapper{
-  border: 5px solid black;
-  width: 240px;
-}
-`
-const TypeWrapper = styled.div`
-display: flex;
-width: 100%;
-gap: 10px;
-justify-content: center;
-`
-
-const TypeContainer = styled.div`
-align-items: center;
-background: ${props => props.background};
-border-radius: 4px;
-border: 1px solid black;
-color: white;
-display: flex;
-font-size: 12px;
-height: 26px;
-justify-content: center;
-text-align: center;
-text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
-text-transform: uppercase;
-width: 66px;
-`
-
-const StatWrapper = styled.div`
-width: 100%;
-flex-wrap: wrap;
-display: flex;
-font-family: "PokemonDB";
-text-transform: uppercase;
-max-width: 240px;
-`
-
-const StatContainer = styled.div`
-width: 50%;
-display: flex;
-flex-direction: column;
-gap: 10px;
-margin-bottom: 5px;
-align-items: center;
-justify-content: center;
-font-size: 16px;
-text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
-
-.points{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 24px;
-  &::after{
-    content: "";
-    width: 100px;
-    height: 5px;
-    background-color: #000000;
-    display: block;
-  }
-}
-`
-
-
 export default function Card({name, sprite, types, stats}) {
   const [pokemonTypes, setPokemonTypes] = useState([])
   const [pokemonStats, setPokemonStatus] = useState([])
@@ -117,19 +34,18 @@ export default function Card({name, sprite, types, stats}) {
     const updateArray = []
 
     arrayTypes.map((typesArray) => {
-      if(types[0].type.name == typesArray.name){
-        updateArray.push(typesArray)
-        setPokemonTypes(updateArray)
-        setgradientColor1(updateArray[0].color)
-        setgradientColor2(updateArray[0].color)
-      }
+    if(types[0].type.name == typesArray.name){
+      updateArray.push(typesArray)
+      setPokemonTypes(updateArray)
+      setgradientColor1(updateArray[0].color)
+      setgradientColor2(updateArray[0].color)
+    }
     })
     if(types.length == 2){
       arrayTypes.map((typesArray) => {
         if(types[1].type.name == typesArray.name){
           updateArray.push(typesArray)
           setPokemonTypes(updateArray)
-          setgradientColor1(updateArray[0].color)
           setgradientColor2(updateArray[1].color)
         }
       })

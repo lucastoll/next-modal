@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import Link from "next/link";
 import Card from "../src/components/Card";
 import styled from "styled-components";
 
@@ -25,92 +24,73 @@ export default function HomeFetch() {
   const [data, setData] = useState([]);
   const [searchPokemon, setSearchPokemon] = useState(1);
   const [inputPokemonGroup, setInputPokemonGroup] = useState(10);
-  const [apiResponse, setApiResponse] = useState("");
 
-  async function getPokemon(pokemonId) {
+  function VerifyAndPushPokemonContent(pokemon, array) {
+    const newSprite = pokemon.sprites.other.dream_world.front_default;
+    const oldSprite = pokemon.sprites.front_default;
+
+    if (newSprite || oldSprite) {
+      array.push(...data, {
+        name: pokemon.name,
+        sprite: newSprite || oldSprite,
+        types: pokemon.types,
+        stats: pokemon.stats,
+      });
+      setData(array);
+    }
+  }
+
+  function handleGetPokemon(pokemonId) {
     const updateArray = [];
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
       .then((response) => {
-        if(response.ok){
-          response.json()
-          .then((pokemon) => {
-            if(pokemon.sprites.other.dream_world.front_default){
-              updateArray.push(...data, {
-                name: pokemon.name,
-                sprite: pokemon.sprites.other.dream_world.front_default,
-                types: pokemon.types,
-                stats: pokemon.stats,
-              });
-              setData(updateArray);
-              setApiResponse("");
-            }
-            else if(pokemon.sprites.front_default){
-              updateArray.push(...data, {
-                name: pokemon.name,
-                sprite: pokemon.sprites.front_default,
-                types: pokemon.types,
-                stats: pokemon.stats,
-              });
-              setData(updateArray);
-              setApiResponse("");
-            }
-            else{
-              setApiResponse("Pokémon não encontrado");
-            }
-          }); 
+        if (response.ok) {
+          response
+            .json()
+            .then((pokemon) =>
+              VerifyAndPushPokemonContent(pokemon, updateArray)
+            );
+        } else {
+          throw new Error(
+            `Pokémon não encontrado! erro HTTP status: ${response.status}`
+          );
         }
-        else{
-          setApiResponse("Pokémon não encontrado");
-        }
-      })        
+      })
+      .catch((e) => alert(e.message));
   }
 
   function handleFormSubmit(event) {
     event.preventDefault();
-    getPokemon(searchPokemon);
+    handleGetPokemon(searchPokemon);
   }
 
   function handleFormSubmitPromiseAll(event) {
     event.preventDefault();
-    const endpoints = []
-    const promises = []
+    const endpoints = [];
+    const promises = [];
     const updateArray = [];
 
-    if(inputPokemonGroup < 1 || inputPokemonGroup > 898){
-      setApiResponse("Intervalo inválido.")
-    }
-    else{
-      for(let i=1; i <= inputPokemonGroup; i++){
-        endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`)
-        promises.push(fetch(endpoints[i-1]).then(response => response.json()))
-      }
-
-      Promise.all(promises)
-        .then(pokemons => {
-          pokemons.map(pokemon => {
-            if(pokemon.sprites.other.dream_world.front_default){
-              updateArray.push(...data, {
-                name: pokemon.name,
-                sprite: pokemon.sprites.other.dream_world.front_default,
-                types: pokemon.types,
-                stats: pokemon.stats,
-              });
-              setData(updateArray);
-            }
-            else if(pokemon.sprites.front_default){
-              updateArray.push(...data, {
-                name: pokemon.name,
-                sprite: pokemon.sprites.front_default,
-                types: pokemon.types,
-                stats: pokemon.stats,
-              });
-              setData(updateArray);
-            }
-          })
+    if (inputPokemonGroup < 1 || inputPokemonGroup > 898) {
+      alert("Intervalo inválido.");
+    } else {
+    for (let i = 1; i <= inputPokemonGroup; i++) {
+      endpoints.push(`https://pokeapi.co/api/v2/pokemon/${i}`);
+      promises.push(
+        fetch(endpoints[i - 1]).then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
         })
-        .catch(setApiResponse("Erro, algum dos pokémons não foi encontrado."))
+      );
     }
 
+    Promise.all(promises).then((pokemons) =>
+      pokemons.forEach((pokemon) =>
+        VerifyAndPushPokemonContent(pokemon, updateArray)
+      )
+    );
+  }
   }
 
   return (
@@ -141,7 +121,6 @@ export default function HomeFetch() {
         <button type="submit">Buscar pokémons.</button>
       </form>
 
-      <p>{apiResponse}</p>
       <Container>
         {data.map((pokemon, i) => (
           <Card
