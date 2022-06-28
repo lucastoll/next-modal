@@ -53,11 +53,23 @@ export default function Card({name, sprite, types, stats}) {
 }
 
   function handleStats (){
-    const updateArray = []
+    let BestStatus 
+    let SecondBestStatus
+
+    BestStatus = {name: stats[0].stat.name.replace("special", "sp"), points: stats[0].base_stat}
+    SecondBestStatus = {name: "", points: 0}
+
     stats.map((stat) => {
-      updateArray.push({name: (stat.stat.name).replace("special", "sp"), points: stat.base_stat})
-      setPokemonStatus(updateArray)
+      if(stat.base_stat > BestStatus.points)
+        BestStatus = {name: stat.stat.name.replace("special", "sp"), points: stat.base_stat}
     })
+
+    stats.map((stat) => {
+      if(stat.base_stat <= BestStatus.points && stat.stat.name.replace("special", "sp") != BestStatus.name && stat.base_stat > SecondBestStatus.points)
+          SecondBestStatus = {name: stat.stat.name.replace("special", "sp"), points: stat.base_stat}
+    })
+
+    setPokemonStatus([BestStatus, SecondBestStatus])
   }
 
   useEffect(() => {

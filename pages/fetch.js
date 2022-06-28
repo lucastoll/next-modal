@@ -3,13 +3,49 @@ import Head from "next/head";
 import Card from "../src/components/Card";
 import styled from "styled-components";
 
+import backgroundMobile from "../public/Image/backgroundmobile.jpg"
+import backgroundDesktop from "../public/Image/backgrounddesktop.jpg"
+
+
 const Wrapper = styled.div`
   display: flex;
   gap: 10px;
   flex-direction: column;
-  flex-wrap: wrap;
-  margin: 30px 30px;
+  padding: 5px 30px 30px;
+  height: 100vh;
   align-items: center;
+  background: url(${backgroundMobile.src});
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  input{
+    width: 100px;
+  }
+  
+  p {
+    margin: 0;
+    color: white;
+    text-align: center;
+  }
+
+  form{
+    display: flex;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 400px) {
+    p, input, button {
+      font-size: 18px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    background: url(${backgroundDesktop.src});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 `;
 
 const Container = styled.div`
@@ -18,12 +54,15 @@ const Container = styled.div`
   gap: 10px;
   align-items: center;
   justify-content: center;
+
+  overflow-y: scroll;
 `;
 
 export default function HomeFetch() {
   const [data, setData] = useState([]);
   const [searchPokemon, setSearchPokemon] = useState(1);
-  const [inputPokemonGroup, setInputPokemonGroup] = useState(10);
+  const [inputPokemonGroup, setInputPokemonGroup] = useState(151);
+  const [allowInputPokemonGroup, setAllowInputPokemonGroup] = useState(true)
 
   function VerifyAndPushPokemonContent(pokemon, array) {
     const newSprite = pokemon.sprites.other.dream_world.front_default;
@@ -58,11 +97,12 @@ export default function HomeFetch() {
         }
       })
       .catch((e) => alert(e.message));
-  }
+    }
 
   function handleFormSubmit(event) {
     event.preventDefault();
     handleGetPokemon(searchPokemon);
+    setAllowInputPokemonGroup(false)
   }
 
   function handleFormSubmitPromiseAll(event) {
@@ -70,6 +110,7 @@ export default function HomeFetch() {
     const endpoints = [];
     const promises = [];
     const updateArray = [];
+
 
     if (inputPokemonGroup < 1 || inputPokemonGroup > 898) {
       alert("Intervalo inválido.");
@@ -91,6 +132,7 @@ export default function HomeFetch() {
       )
     );
   }
+  setAllowInputPokemonGroup(false)
   }
 
   return (
@@ -99,7 +141,7 @@ export default function HomeFetch() {
         <title>Home</title>
       </Head>
 
-      <p>Digite um nome ou o número de algum pokémon.</p>
+        <p>Busca um pokémon pelo número ou nome.</p>
       <form onSubmit={handleFormSubmit}>
         <input
           required
@@ -109,17 +151,21 @@ export default function HomeFetch() {
         ></input>
         <button type="submit">Buscar pokémon.</button>
       </form>
-      <p>Digite um número de pokemons para ser mostrado ao mesmo tempo.</p>
 
-      <form onSubmit={handleFormSubmitPromiseAll}>
-        <input
-          required
-          type="text"
-          value={inputPokemonGroup}
-          onChange={(event) => setInputPokemonGroup(event.target.value)}
-        ></input>
-        <button type="submit">Buscar pokémons.</button>
-      </form>
+      {allowInputPokemonGroup && 
+      <>      
+        <p>Busca vários pokemons.</p>
+        <form onSubmit={handleFormSubmitPromiseAll}>
+          <input
+            required
+            type="text"
+            value={inputPokemonGroup}
+            onChange={(event) => setInputPokemonGroup(event.target.value)}
+          ></input>
+          <button type="submit">Buscar pokémons.</button>
+        </form>
+      </>      
+      }
 
       <Container>
         {data.map((pokemon, i) => (

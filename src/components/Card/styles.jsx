@@ -4,9 +4,10 @@ export const Wrapper = styled.div`
 border: 6px solid #fdd600;
 display: flex;
 padding: 10px 10px;
-height: 570px;
+height: fit-content;
 flex-direction: column;
 width: fit-content;
+height: 440px;
 align-items: center;
 justify-content: center;
 gap: 10px;
