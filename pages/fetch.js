@@ -3,8 +3,7 @@ import Head from "next/head";
 import Card from "../src/components/Card";
 import styled from "styled-components";
 
-import backgroundMobile from "../public/Image/backgroundmobile.jpg"
-import backgroundDesktop from "../public/Image/backgrounddesktop.jpg"
+import background from "../src/public/Image/backgroundDesktop.jpg"
 
 
 const Wrapper = styled.div`
@@ -14,7 +13,7 @@ const Wrapper = styled.div`
   padding: 5px 30px 30px;
   height: 100vh;
   align-items: center;
-  background: url(${backgroundMobile.src});
+  background:  url(${props => props.background.src});
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -40,12 +39,6 @@ const Wrapper = styled.div`
     }
   }
 
-  @media screen and (min-width: 1024px) {
-    background: url(${backgroundDesktop.src});
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
 `;
 
 const Container = styled.div`
@@ -136,7 +129,7 @@ export default function HomeFetch() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper background={background}>
       <Head>
         <title>Home</title>
       </Head>
