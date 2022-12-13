@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import Head from "next/head";
-import Card from "../src/components/Card";
+import Card from "../components/Card";
 import styled from "styled-components";
+import background from "../public/images/backgroundDesktop.jpg"
 
-import background from "../src/public/Image/backgroundDesktop.jpg"
+import { Fira_Sans } from '@next/font/google'
+import Link from "next/link";
+
+const PokemonDB = Fira_Sans({
+  weight: '800',
+  subsets: ['latin'],
+})
 
 
 const Wrapper = styled.div`
@@ -129,18 +135,17 @@ export default function HomeFetch() {
   }
 
   return (
-    <Wrapper background={background}>
-      <Head>
-        <title>Home</title>
-      </Head>
-
+    <Wrapper background={background} className={PokemonDB.className}>
+        <Link href="/">
+            <h1>Voltar para a home</h1>
+        </Link>
         <p>Busca um pokémon pelo número ou nome.</p>
       <form onSubmit={handleFormSubmit}>
         <input
           required
           type="text"
           value={searchPokemon}
-          onChange={(event) => setSearchPokemon(event.target.value)}
+          onChange={(event) => setSearchPokemon((event.target.value).toLowerCase())}
         ></input>
         <button type="submit">Buscar pokémon.</button>
       </form>

@@ -1,16 +1,15 @@
 import React from 'react'
-import { Container, Wrapper } from "../src/styles/styled";
-import Footer from "../src/components/Footer";
+import { Container, Main } from '../styles/styled'
 import Head from 'next/head';
 import Link from 'next/link';
 
 export default function Page404() {
   return (
-    <Wrapper>
+    <Container>
         <Head>
         <title>404</title>
       </Head>
-      <Container>
+      <Main>
         <h1 className="title">
           Welcome to <a href="#">page 404</a>, you`re in the wrong place
         </h1>
@@ -21,8 +20,7 @@ export default function Page404() {
             </div>
           </Link>
         </div>
-      </Container>
-      <Footer></Footer>
-    </Wrapper>
+      </Main>
+    </Container>
   )
 }

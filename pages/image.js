@@ -3,8 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/dist/client/link';
 import styled from 'styled-components';
-import { Container, Wrapper } from '../src/styles/styled';
-import Footer from "../src/components/Footer";
+import { Main as StylesMain, Container } from '../styles/styled';
 
 
 export const ImageContainer = styled.div`
@@ -15,9 +14,15 @@ position: relative;
 border: 2px solid black;
 `
 
+const Main = styled(StylesMain)`
+  width: 100%;
+  padding: 0;
+  border-top: 2px grey solid;
+`
+
 export default function HomeImage() {
   return (
-    <Wrapper>
+    <Container>
         <Head>
           <title>next/image</title>
         </Head>
@@ -25,17 +30,15 @@ export default function HomeImage() {
           Welcome to <a href="#">next/image</a>
         </h1>
         <Link href="/">
-        <a>
           <h2>
             Click here to go back to home
           </h2>
-        </a>
         </Link>
-        <Container style={{width: "100%"}}>
-            <h2>Layout fill + position relative</h2>
+        <Main>
+            <h2>Layout fill + position relative no container</h2>
             <h3 style={{width: '100%', textAlign: 'center'}}>No reload, dependendo do tamanho da tela, uma imagem é renderizada com um peso e tamanho X, esses breakpoints estão definidos no next.config.js</h3>
             <ImageContainer>
-              <Image layout='fill' priority src='/Image/gandalf728.jpg' alt="Leao" />
+              <Image fill priority src='/images/gandalf1920.jpg' alt="gandalf" />
               {
               /* 
               priority = sem lazy loading (carregar apenas no vw)
@@ -43,8 +46,7 @@ export default function HomeImage() {
               */
               }
             </ImageContainer>
-        </Container>
-        <Footer />
-    </Wrapper>
+        </Main>
+    </Container>
   )
 }

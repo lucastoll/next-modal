@@ -23,6 +23,8 @@ h2{
 .ImageWrapper{
   border: 5px solid black;
   width: 240px;
+  height: 240px;
+  position: relative;
 }
 `
 
@@ -67,6 +69,7 @@ margin-bottom: 5px;
 align-items: center;
 justify-content: center;
 font-size: 16px;
+color: black;
 text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
 
 .points{

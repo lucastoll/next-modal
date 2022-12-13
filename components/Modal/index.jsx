@@ -10,13 +10,11 @@ const MyModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  //background-color: rgba(255, 255, 255, 0.9);
   z-index: 1;
 
   .modal {
     animation: ${(props) =>
     props.animateModal ? "modal 1s" : `modalLeave 1s forwards`};
-    //transition: all 0.9s;
     padding: 30px;
     background: #f1f1f1;
     border: 2px solid #f2f2f2;
@@ -59,6 +57,13 @@ const MyModal = styled.div`
       to {
         transform: translate(0, 100vh);
       }
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .modal{
+      background: black;
+      border: 2px solid white;
     }
   }
 `;

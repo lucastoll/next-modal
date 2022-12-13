@@ -8,28 +8,22 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
-export const Wrapper = styled.div`
+
+export const Main = styled.div`
   padding: 0 2rem;
-  min-height: 100vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  
-.footer {
-  display: flex;
+.main {
+  min-height: 100vh;
+  padding: 4rem 0;
   flex: 1;
-  padding: 2rem 0;
-  border-top: 2px solid #c4c4c4;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer a {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
 }
 
 .title a {
@@ -46,7 +40,7 @@ export const Wrapper = styled.div`
 .title {
   margin: 0;
   line-height: 1.15;
-  font-size: clamp(36px, 5vw, 72px);
+  font-size: 4rem;
 }
 
 .title,
@@ -55,7 +49,7 @@ export const Wrapper = styled.div`
 }
 
 .description {
-  margin: 4rem 0;
+  margin: 12px 0;
   line-height: 1.5;
   font-size: 1.5rem;
 }
@@ -74,8 +68,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 1200px;
-  align-self: center;
+  max-width: 800px;
 }
 
 .card {
@@ -84,11 +77,11 @@ export const Wrapper = styled.div`
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #c4c4c4;
-  height: 160px;
+  border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 300px;
+  height: 150px
 }
 
 .card:hover,
@@ -109,11 +102,6 @@ export const Wrapper = styled.div`
   line-height: 1.5;
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
-}
-
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -121,4 +109,33 @@ export const Wrapper = styled.div`
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .card,
+  .footer {
+    border-color: white;
+  }
+  .code {
+    background: #111;
+  }
+
+  body{
+    color: white;
+  }
+
+  .logo img {
+    filter: invert(1);
+    }
+}
+
 `
+
+export const FooterLogoWrapper = styled.div`
+  height: 1em;
+  margin-left: 0.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    filter: invert(1);
+}
+
+`
+

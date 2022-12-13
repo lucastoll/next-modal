@@ -82,7 +82,7 @@ export default function Card({name, sprite, types, stats}) {
     <Wrapper gradientColor1={gradientColor1} gradientColor2={gradientColor2} text={name}>
         <h2>{name}</h2>
         <div className='ImageWrapper'>
-          <Image width={280} height={280} src={sprite} alt={name}/>
+          <Image fill src={sprite} alt={name}/>
         </div>
         <TypeWrapper>
         {

@@ -1,8 +1,6 @@
 import React from "react";
-import Head from "next/head";
-import Modal from "../src/components/Modal/index";
-import Footer from "../src/components/Footer";
-import { Container, Wrapper } from "../src/styles/styled";
+import { Container, Main } from '../styles/styled'
+import Modal from "../components/Modal/index";
 import Link from "next/link";
 
 export default function Home() {
@@ -29,53 +27,52 @@ export default function Home() {
   };
 
   return (
-    <Wrapper id="app">
-      <Head>
-        <title>Home</title>
-      </Head>
-      <Container>
-        <h1 className="title">
+    <Container>
+      <Main>
+      <h1 className="title">
           Welcome to <a href="#">testes-next</a>
         </h1>
 
-        <p className="description">Get started by clicking this thing below</p>
+        <p className="description">Get started by clicking one of the buttons</p>
 
         <div className="grid">
           <a
             className="card"
             onClick={enableShowModalButton === true ? openModal : undefined}
           >
-            <h2>Open modal &rarr;</h2>
-            <p>Click here to open the modal.</p>
+            <h2>open modal &rarr;</h2>
+            <p>a modal developed using a lot of states for work</p>
           </a>
 
           <Link href="/image">
             <div className="card">
-              <h2>Go to page next/image</h2>
+              <h2>next/image</h2>
+              <p>A page to test next image feature</p>
             </div>
           </Link>
           <Link href="/404">
             <div className="card">
-              <h2>Go to page 404</h2>
-              <p>Click here or enter a random /link in the adress</p>
+              <h2>404</h2>
+              <p>click here or enter a random /link in the adress to access</p>
             </div>
           </Link>
           <Link href="/api">
             <div className="card">
-              <h2>Go to my api response</h2>
+              <h2>my api response</h2>
+              <p>simple api to test next api feature</p>
             </div>
           </Link>
           <Link href="/fetch">
             <div className="card">
               <h2>Go to page fetch api</h2>
+              <p>a page that consumes  pokemon api</p>
             </div>
           </Link>
         </div>
         {showModal && (
           <Modal closeModal={closeModal} animateModal={animateModal} />
         )}
-      </Container>
-      <Footer></Footer>
-    </Wrapper>
-  );
+      </Main>
+    </Container>
+  )
 }
