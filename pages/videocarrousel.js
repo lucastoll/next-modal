@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useState }  from 'react'
 import styled from 'styled-components'
 
@@ -82,6 +83,7 @@ video{
 export default function Hero() {
   const [video, setVideo] = useState(0);
   return (
+    <>
     <Wrapper>
       {infos.map((info, key) => (
         <Container key={key} video={video} style={key === video ? {display: "flex"} : {display: "none"}}>
@@ -98,5 +100,9 @@ export default function Hero() {
         <Frames setVideo={setVideo}/>
       </div> 
     </Wrapper>
+    <Link href="/">
+        <h2 style={{textAlign: 'center'}}>Voltar para o home</h2>
+    </Link>
+    </>
   )
 }
