@@ -28,5 +28,16 @@ As páginas desenvolvidas até então são:
 
 ![image](https://user-images.githubusercontent.com/86172649/207624396-e0379cb0-4d1d-432a-ae99-6e66aec97a9a.png)
 
+## Executar projeto localmente
+use
+```
+yarn 
+```
+para instalar as dependencias do projeto
+```
+yarn dev
+```
+para rodar o projeto no localhost.
+
 
 
