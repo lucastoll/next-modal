@@ -68,7 +68,7 @@ export const Main = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1200px;
 }
 
 .card {
@@ -81,7 +81,7 @@ export const Main = styled.div`
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 300px;
-  height: 150px
+  height: 220px
 }
 
 .card:hover,
@@ -107,6 +107,10 @@ export const Main = styled.div`
     width: 100%;
     flex-direction: column;
   }
+}
+
+.card .smallerText{
+  font-size: 15px
 }
 
 @media (prefers-color-scheme: dark) {

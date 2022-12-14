@@ -65,7 +65,13 @@ export default function Home() {
           <Link href="/fetch">
             <div className="card">
               <h2>Go to page fetch api</h2>
-              <p>a page that consumes  pokemon api</p>
+              <p>a page that consumes  pokemon api that i developed for training</p>
+            </div>
+          </Link>
+          <Link href="/videocarrousel">
+            <div className="card">
+              <h2>video carrousel</h2>
+              <p>a carrousel with background videos that i developed for work with swiper.js</p>
             </div>
           </Link>
         </div>

@@ -13,3 +13,6 @@ module.exports = {
     deviceSizes: [320, 640, 768, 1024, 1600, 1920, 2560]
   }
 }, nextConfig
+
+const withVideos = require('next-videos')
+module.exports = withVideos()
