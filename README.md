@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⚪ testes-next
 
-## Getting Started
+Minha lousa de testes em next <br>
+Link: https://testes--next.vercel.app/
 
-First, run the development server:
+![image](https://user-images.githubusercontent.com/86172649/207620655-9ef36ec3-b7fd-4f16-b5ac-0047222fd9dc.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O site é separados em várias páginas usando o sistema de roteamento do next, ele contém páginas com componentes que fiz para o trabalho e também outros que fiz para aprender
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+As páginas desenvolvidas até então são: 
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+<ul>
+  <li>home, conténdo o link para todas as páginas e também um modal que eu desenvolvi para o trabalho</li>
+  <li>next/image, página que usei para testar a API Image do next pela primeira vez</li>
+  <li>404, página para testar o sistema de página não encontrada no next</li>
+  <li>my api response, página para testar o sistema de criação de APIS no next</li>
+  <li>video carrousel, componente que consiste em um carrousel onde ao clicar em uma das opções o vídeo de background troca, desenvolvido com o swiper.js</li>
+</ul>
+<br>
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+![image](https://user-images.githubusercontent.com/86172649/207623896-4111c25c-b30a-4dde-aec9-95fc65d871c4.png)
+  
+<ul>
+  <li>pokemon api, clássico projeto da pokedex que eu fiz em um pico de energia para treinar a manipulação de apis.</li>
+</ul>
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://user-images.githubusercontent.com/86172649/207624396-e0379cb0-4d1d-432a-ae99-6e66aec97a9a.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
