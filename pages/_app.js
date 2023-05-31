@@ -1,8 +1,19 @@
 import Head from 'next/head'
 import Footer from '../components/Footer'
 import { GlobalStyle } from '../styles/GlobalStyled'
+import TagManager from "react-gtm-module";
+import { useEffect } from 'react';
+
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    const tagManagerArgs = {
+      gtmId: "GTM-KJ5JPBB",
+    };
+
+    TagManager.initialize(tagManagerArgs);
+  });
+
   return (
     <>  
       <Head>
